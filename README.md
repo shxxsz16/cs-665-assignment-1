@@ -1,29 +1,57 @@
 
 | CS-665       | Software Design & Patterns |
 |--------------|----------------------------|
-| Name         | FIRST_NAME LAST_NAME       |
-| Date         | MM/DD/YYYY                 |
-| Course       | Fall / Spring / Summer     |
-| Assignment # |                            |
+| Name         | Zihan Wang                 |
+| Date         | 10/06/2026                 |
+| Course       | 26Fall                     |
+| Assignment # | 1                          |
 
 # Assignment Overview
-Please add a paragraph or two overviewing the objectives of the assignment.
+
+The objective of this assignment is to design and implement a fully automated beverage vending machine using Java and object-oriented design principles. The system supports multiple coffee and tea beverages, optional milk and sugar, and automatic price calculation.
+The assignment also focuses on creating a flexible and maintainable class structure and verifying the implementation with JUnit tests.
 
 # GitHub Repository Link:
-https://github.com/{YOUR_USERNAME}/cs-665-assignment-{ASSIGNMENT_NUMBER}
+https://github.com/shxxsz16/cs-665-assignment-1.git
 
 # Implementation Description 
+Beverage is an abstract base class that contains common properties and behaviors shared by all beverages. The amount of milk and sugar is stored in this class as attributes, restricting each one to a maximum of three units. Each price at 0.5/one condiment. 
+
+Two abstract subclasses, Coffee and Tea, are used to organize the different beverage categories. Concrete beverage classes such as Espresso, Americano, LatteMacchiato, BlackTea, GreenTea, and YellowTea inherit from these classes and implement their specific brewing behavior.
+
+The VendingMachine class is responsible for managing the beverage preparation process. This separates machine responsibilities from individual beverage responsibilities.
+
+The design avoids duplicated code by placing common condiment in the Beverage class. It is also flexible because new beverage types can be added by just creating a new subclass without significantly modifying the existing implementation.
+
+# Assumptions
+- Each beverage has a fixed base price.
+- Milk and sugar cost $0.50 per condiment.
+- A beverage can contain at most 3 units of milk and 3 units of sugar.
+- Beverage prices are defined in their concrete classes.
+
+## Run
+
+After compiling the project:
+java -cp target/classes edu.bu.met.cs665.Main
+
+and
+
+mvn clean compile
+mvn test
 
 
-For each assignment, please answer the following:
+# For each assignment, please answer the following:
 
-- Explain the level of flexibility in your implementation, including how new object types can
-be easily added or removed in the future.
-- Discuss the simplicity and understandability of your implementation, ensuring that it is
-easy for others to read and maintain.
-- Describe how you have avoided duplicated code and why it is important.
-- If applicable, mention any design patterns you have used and explain why they were
-chosen.
+-Flexibility
+All beverages inherit from the abstract Beverage class. New drink types can be added easily by creating a new subclass of Coffee or Tea and defining its base price and brewing behavior. Existing drink types can also be removed without affecting the overall structure of the vending machine.
+- Simplicity and Understandability
+It separates responsibilities clearly. Beverage manages common properties such as milk, sugar, and price, while each concrete beverage class represents a specific drink. The VendingMachine class is responsible for preparing beverages.
+- Avoiding Duplicated Code
+Common functionality such as adding milk, adding sugar, and calculating the final price is implemented once in the Beverage class. Subclasses inherit this behavior instead of repeating the same code.
+-Design Patterns / Design Principles
+No specific GoF design pattern is used. The implementation uses abstraction, inheritance, and polymorphism. 
+
+
 
 
 # Maven Commands
